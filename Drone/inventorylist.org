@@ -1,0 +1,178 @@
+
+#+TITLE: Pyrant Documentation
+#+AUTHOR: Dharshan Rammohan & Vishakh Kumar
+
+# Local Variables:
+# eval: (esf/execute-startup-block)
+# End:
+
+
+
+#+CALL: (esf/execute-startup-block)
+
+** Custom org-mode features for this file
+#+NAME: startup
+#+BEGIN_LISP :noweb yes
+(defun esf/execute-startup-block ()
+  
+  <<set_org_todo_keywords>>
+  <<set_org_keyword_faces>>
+)
+#+END_LISP
+
+#+RESULTS: startup
+: esf/execute-startup-block
+
+*** Set custom Org-mode headline tags
+ #+NAME: set_org_todo_keywords
+ #+BEGIN_SRC emacs-lisp
+ ;; Set custom org-mode headline tags
+ (setq org-todo-keywords '(
+                           (type  "Vi-TODO" 
+                                  "Dharsh-TODO" 
+                                  "ASK-Trey" 
+                                 
+                                  "Vi-CURRENT(!)" 
+                                  "Dharsh-CURRENT(!)" 
+
+                                  "|" 
+
+                                  "Vi-Owner(!)"
+                                  "Dharsh-Owner(!)")
+                          )
+ )
+ #+END_SRC
+
+ #+RESULTS: set_org_todo_keywords
+ | type | Vi-TODO | Dharsh-TODO | ASK-Trey | Vi-CURRENT(!) | Dharsh-CURRENT(!) |   |   | Vi-Owner(!) | Dharsh-Owner(!) |
+
+*** Set colors for headline tags
+ #+NAME: set_org_keyword_faces
+ #+BEGIN_SRC emacs-lisp
+ ;; Set colors for headline tags
+ (setq org-todo-keyword-faces
+       '(
+
+         ;; Todo Items
+         ("Vi-TODO"         . (:foreground "white" :background "blue"                   )  ) 
+         ("Dharsh-TODO"     . (:foreground "black" :background "yellow"                 )  )
+         ("ASK-Trey"        . (:foreground "red"                           :weight bold )  )
+ 
+         ;; In-progress Items
+         ("Vi-CURRENT"      . (:foreground "blue"  :background "black"     :weight bold )  ) 
+         ("Dharsh-CURRENT"  . (:foreground "blue"  :background "black"     :weight bold )  )
+
+         ;; Finished items that are owned by
+         ("Vi-Owner"        . (:foreground "Green"                         :weight bold )  )
+         ("Dharsh-Owner"    . (:foreground "Green"                         :weight bold )  )
+
+        )
+ )
+ #+END_SRC
+
+
+
+* Tasks
+  
+** Hardware
+
+*** Vi-TODO Flight Logic Controller
+**** Vi-TODO Connect the arduino pins to raspberry pi pins for SPI interface
+**** Vi-TODO Arduino
+***** Vi-TODO Place two motor controller, one arduino mini & one IMU unit on a prototyping board
+***** Vi-TODO Solder into place and use cables for pin management 
+***** Vi-TODO IMU unit
+****** Vi-TODO Solder IMU to header pin
+****** Vi-TODO Connect IMU pins to Arduino pins through I2C interface
+**** Vi-TODO Raspberry Pi 
+***** Vi-TODO Connect cameras to board 
+** Dharsh-TODO Simulink
+*** Vi-Owner Added RASPlib library
+*** Vi-Owner Implemented feedback-input comparator
+*** Vi-Owner mux-ed and demux-d input and made subsystem
+*** Dharsh-TODO Integrate Motor controllers
+**** Dharsh-TODO Add .c files to Matlab
+**** Dharsh-TODO Add motor controller blocks to a subsystem and define input/output
+      Note: Making this a seperate subsystem will make it easier to switch to a hexacopter motor control.
+**** ASK-Trey Make a PID subsystem that accepts position based input.
+*** Vi-TODO Building process
+**** Vi-TODO Build c files and avr to arduino mini.
+**** Vi-TODO Document in a bash script for easy use.
+** Dharsh-TODO Controller logic
+*** Dharsh-Owner Implement gyrometer, accelerometer & magnetometer PID controller
+    Note: Philip (IEEE) mentioned that it would take far too long for the drones to come to a stop and hover and would not be appropiate for a swarm of controller
+    Recommends switching to a position based PID controller
+*** ASK-Trey Ask Trey about position based controller
+**** Dharsh-TODO Implement position based controller in Simulink
+      Note: Pretend that the Raspberry Pi is sending signals but actually use the keyboard for mocking.
+** Vi-TODO OpenCV Software
+*** Vi-TODO Implement the video combination thing and connect to Simulink
+*** Vi-TODO Fill in this section
+** Vi-TODO Drone Frame
+*** Vi-TODO Place components on plywood
+*** Vi-TODO Design drone shape 
+**** Vi-TODO Try to make thin frames with multiple overlays
+Effectively, make it thin and increase strength on thin frames by two planks. Go Deformable Bodies!
+*** Vi-TODO Laser-cut at the invention studio
+
+
+* Inventory
+
+|----------+------------------------------+---------+---------+--------------------------------------|
+| Quantity | Item                         | Damaged | Require | Status                               |
+|----------+------------------------------+---------+---------+--------------------------------------|
+|        5 | batteries                    |         |       2 |                                      |
+|        4 | micro sd cards               |         |       2 |                                      |
+|        3 | micro sd card adapters       |         |       2 |                                      |
+|        4 | arduino minis                |         |       2 |                                      |
+|        2 | raspberry pi 0's             |         |       2 |                                      |
+|        1 | fully cloaked raspberry pi 0 |         |       0 |                                      |
+|        1 | card reader                  |         |       1 |                                      |
+|        2 | IMUs - MPU965                |         |       2 |                                      |
+|       20 | Motors                       |         |       8 |                                      |
+|        0 | Propellors                   |         |       8 | Amazon Delivery under way (Dharshan) |
+|        2 | Plywood                      |         |       1 |                                      |
+|        8 | Motor Controller             |         |       4 |                                      |
+|          |                              |         |         |                                      |
+|----------+------------------------------+---------+---------+--------------------------------------|
+
+** Battery 
+ - Capacity:   500 mAh 
+ - Voltage:    3.7V
+
+** Raspberry Pi
+
+ - [[https://www.raspberrypi.org/documentation/hardware/raspberrypi/][Spec sheet Link]]
+
+** Arduino Pro Mini
+
+ [[http://www.robotpark.com/Arduino-Pro-Mini-328-En][- Spec sheet Link]]
+
+** Motor
+
+ - No spec sheet available
+ - KV Rating 
+
+** Dharsh-TODO Propellers
+
+ - No spec sheet available
+
+** IMU
+
+ - [[https://github.com/NelisW/myOpenHab/blob/master/docs/707-MPU-9250-9265%20IMU.md][Github Link]] 
+ - [[http://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf][Spec sheet]]
+
+ - Brief Description
+ #+BEGIN_TEXT
+ MPU-9250 module( 3 axis accelerator, 3 axis gyro and 3 axis magnetometer)
+ Chip: MPU9250; Power voltage: 3~5V
+ Communication mode: I2C / SPI; Gyro range: +/-250, +/-500, +/-1000, +/-2000dps
+ Accelerator range: +/-2G, +/-4G, +/-8G, +/-16G
+ Magnetometer range: +/-4800uF
+ Pin spacing:2.54mm
+ Size: 15mm*25mm (approx)
+ #+END_TEXT
+
+
+
+
