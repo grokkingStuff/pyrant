@@ -1,81 +1,100 @@
+<<<<<<< HEAD
+#+TITLE: Pyrant Documentation
+#+AUTHOR: Dharshan Rammohan & Vishakh Kumar
+
+
+* Custom org-mode features for this file
+Mainly to put custom TODO types so that everyone can use them.
+
+#+NAME: startup
+#+BEGIN_SRC emacs-lisp :tangle .dir-locals.el :noweb yes :results silent
+
+(
+  (org . (
+          <<set_org_todo_keywords>>
+          <<set_org_keyword_faces>>
+         )
+  )
+)
+#+END_SRC
+
+** Set custom Org-mode headline tags
+#+NAME: set_org_todo_keywords
+#+BEGIN_SRC emacs-lisp :results silent
+;; Set custom org-mode headline tags
+(setq org-todo-keywords '(
+=======
+# -*- eval: (progn (org-babel-goto-named-src-block "startup") (org-babel-execute-src-block-maybe)) -*-
 
 #+TITLE: Pyrant Documentation
 #+AUTHOR: Dharshan Rammohan & Vishakh Kumar
 
 # Local Variables:
-# eval: (esf/execute-startup-block)
+# mode: org
+# eval: (esf/execure-startup-block)
 # End:
 
 
-
-#+CALL: (esf/execute-startup-block)
-
-** Custom org-mode features for this file
+* Custom org-mode features for this file
 #+NAME: startup
-#+BEGIN_LISP :noweb yes
-(defun esf/execute-startup-block ()
-  
-  <<set_org_todo_keywords>>
-  <<set_org_keyword_faces>>
-)
-#+END_LISP
+#+BEGIN_SRC emacs-lisp :noweb yes :results silent
+<<set_org_todo_keywords>>
+<<set_org_keyword_faces>>
+#+END_SRC
 
 #+RESULTS: startup
-: esf/execute-startup-block
+| type | Vi-TODO | Dharsh-TODO | ASK-Trey | Vi-CURRENT(!) | Dharsh-CURRENT(!) |   |   | Vi-Owner(!) | Dharsh-Owner(!) |
 
-*** Set custom Org-mode headline tags
- #+NAME: set_org_todo_keywords
- #+BEGIN_SRC emacs-lisp
- ;; Set custom org-mode headline tags
- (setq org-todo-keywords '(
-                           (type  "Vi-TODO" 
-                                  "Dharsh-TODO" 
-                                  "ASK-Trey" 
+** Set custom Org-mode headline tags
+#+NAME: set_org_todo_keywords
+#+BEGIN_SRC emacs-lisp
+;; Set custom org-mode headline tags
+(setq-local org-todo-keywords '(
+>>>>>>> 58c38a2... Created custom TODO types for ease of reference and issue tracking.
+                          (type  "Vi-TODO" 
+                                 "Dharsh-TODO" 
+                                 "ASK-Trey" 
                                  
-                                  "Vi-CURRENT(!)" 
-                                  "Dharsh-CURRENT(!)" 
+                                 "Vi-CURRENT(!)" 
+                                 "Dharsh-CURRENT(!)" 
 
-                                  "|" 
+                                 "|" 
 
-                                  "Vi-Owner(!)"
-                                  "Dharsh-Owner(!)")
-                          )
- )
- #+END_SRC
+                                 "Vi-Owner(!)"
+                                 "Dharsh-Owner(!)")
+                         )
+)
+#+END_SRC
 
- #+RESULTS: set_org_todo_keywords
- | type | Vi-TODO | Dharsh-TODO | ASK-Trey | Vi-CURRENT(!) | Dharsh-CURRENT(!) |   |   | Vi-Owner(!) | Dharsh-Owner(!) |
+** Set colors for headline tags
+#+BEGIN_SRC emacs-lisp :results silent
+;; Set colors for headline tags
+<<<<<<< HEAD
+(setq org-todo-keyword-faces
+=======
+(setq-local org-todo-keyword-faces
+>>>>>>> 58c38a2... Created custom TODO types for ease of reference and issue tracking.
+      '(
+        ;; Todo Items
+        ("Vi-TODO"         . (:foreground "white" :background "blue"                   )  ) 
+        ("Dharsh-TODO"     . (:foreground "black" :background "yellow"                 )  )
+        ("ASK-Trey"        . (:foreground "red"                           :weight bold )  )
 
-*** Set colors for headline tags
- #+NAME: set_org_keyword_faces
- #+BEGIN_SRC emacs-lisp
- ;; Set colors for headline tags
- (setq org-todo-keyword-faces
-       '(
+        ;; In-progress Items
+        ("Vi-CURRENT"      . (:foreground "blue"  :background "black"     :weight bold )  ) 
+        ("Dharsh-CURRENT"  . (:foreground "blue"  :background "black"     :weight bold )  )
 
-         ;; Todo Items
-         ("Vi-TODO"         . (:foreground "white" :background "blue"                   )  ) 
-         ("Dharsh-TODO"     . (:foreground "black" :background "yellow"                 )  )
-         ("ASK-Trey"        . (:foreground "red"                           :weight bold )  )
- 
-         ;; In-progress Items
-         ("Vi-CURRENT"      . (:foreground "blue"  :background "black"     :weight bold )  ) 
-         ("Dharsh-CURRENT"  . (:foreground "blue"  :background "black"     :weight bold )  )
-
-         ;; Finished items that are owned by
-         ("Vi-Owner"        . (:foreground "Green"                         :weight bold )  )
-         ("Dharsh-Owner"    . (:foreground "Green"                         :weight bold )  )
-
+        ;; Finished items that are owned by
+        ("Vi-Owner"        . (:foreground "Green"                         :weight bold )  )
+        ("Dharsh-Owner"    . (:foreground "Green"                         :weight bold )  )
         )
- )
- #+END_SRC
-
+)
+#+END_SRC
 
 
 * Tasks
   
 ** Hardware
-
 *** Vi-TODO Flight Logic Controller
 **** Vi-TODO Connect the arduino pins to raspberry pi pins for SPI interface
 **** Vi-TODO Arduino
