@@ -1,0 +1,65 @@
+
+#+TITLE: Pyrant Documentation
+#+AUTHOR: Dharshan Rammohan & Vishakh Kumar
+#+SEQ_TODO: Vi-TODO Dharsh-TODO Trey-TODO | Done
+
+* Inventory
+
+|----------+------------------------------+---------+---------+--------------------------------------|
+| Quantity | Item                         | Damaged | Require | Status                               |
+|----------+------------------------------+---------+---------+--------------------------------------|
+|        5 | batteries                    |         |       2 |                                      |
+|        4 | micro sd cards               |         |       2 |                                      |
+|        3 | micro sd card adapters       |         |       2 |                                      |
+|        4 | arduino minis                |         |       2 |                                      |
+|        2 | raspberry pi 0's             |         |       2 |                                      |
+|        1 | fully cloaked raspberry pi 0 |         |       0 |                                      |
+|        1 | card reader                  |         |       1 |                                      |
+|        2 | IMUs - MPU965                |         |       2 |                                      |
+|       20 | Motors                       |         |       8 |                                      |
+|        0 | Propellors                   |         |       8 | Amazon Delivery under way (Dharshan) |
+|        2 | Plywood                      |         |       1 |                                      |
+|        8 | Motor Controller             |         |       4 |                                      |
+|          |                              |         |         |                                      |
+|----------+------------------------------+---------+---------+--------------------------------------|
+
+
+** Battery 
+ - Capacity:   500 mAh 
+ - Voltage:    3.7V
+
+** Raspberry Pi
+
+ - [[https://www.raspberrypi.org/documentation/hardware/raspberrypi/][Spec sheet Link]]
+
+** Arduino Pro Mini
+
+ [[http://www.robotpark.com/Arduino-Pro-Mini-328-En][- Spec sheet Link]]
+
+** Motor
+
+ - No spec sheet available
+ - KV Rating 
+
+** Dharsh-TODO Propellers
+
+ - No spec sheet available
+
+** IMU
+
+ - [[https://github.com/NelisW/myOpenHab/blob/master/docs/707-MPU-9250-9265%20IMU.md][Github Link]] 
+ - [[http://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf][Spec sheet]]
+
+ - Brief Description
+ #+BEGIN_TEXT
+ MPU-9250 module( 3 axis accelerator, 3 axis gyro and 3 axis magnetometer)
+ Chip: MPU9250; Power voltage: 3~5V
+ Communication mode: I2C / SPI; Gyro range: +/-250, +/-500, +/-1000, +/-2000dps
+ Accelerator range: +/-2G, +/-4G, +/-8G, +/-16G
+ Magnetometer range: +/-4800uF
+ Pin spacing:2.54mm
+ Size: 15mm*25mm (approx)
+ #+END_TEXT
+
+* Link to simulink code
+
