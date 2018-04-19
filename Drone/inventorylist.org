@@ -111,7 +111,7 @@ n**** Dharsh-TODO Add .c files to Matlab
       Note: Pretend that the Raspberry Pi is sending signals but actually use the keyboard for mocking.
 ** Vi-TODO OpenCV Software
 *** Vi-TODO Implement the video combination thing and connect to Simulink
-*** Vi-TODO Fill in this section
+*** Vi-TODO Make simulink block that outputs velocity
 ** Vi-TODO Drone Frame
 *** Vi-TODO Place components on plywood
 *** Vi-TODO Design drone shape 
