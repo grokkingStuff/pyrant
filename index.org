@@ -68,32 +68,36 @@ Mainly to put custom TODO types so that everyone can use them.
 ***** Vi-TODO Place two motor controller, one arduino mini & one IMU unit on a prototyping board
 ***** Vi-TODO Solder into place and use cables for pin management 
 ***** Vi-TODO IMU unit
-****** Vi-TODO Solder IMU to header pin
-****** Vi-TODO Connect IMU pins to Arduino pins through I2C interface
+****** Vi-Owner Connect header pins to IMU unit
+****** Vi-Owner Connect IMU pins to Arduino pins through I2C interface
 **** Vi-TODO Raspberry Pi 
 ***** Vi-TODO Connect cameras to board 
 ** Dharsh-TODO Simulink
 *** Vi-Owner Added RASPlib library
 *** Vi-Owner Implemented feedback-input comparator
 *** Vi-Owner mux-ed and demux-d input and made subsystem
-*** Dharsh-TODO Integrate Motor controllers
-**** Dharsh-TODO Add .c files to Matlab
+*** Dharsh-OWNER Integrate Motor controllers
+n**** Dharsh-TODO Add .c files to Matlab
 **** Dharsh-TODO Add motor controller blocks to a subsystem and define input/output
       Note: Making this a seperate subsystem will make it easier to switch to a hexacopter motor control.
 **** ASK-Trey Make a PID subsystem that accepts position based input.
 *** Vi-TODO Building process
 **** Vi-TODO Build c files and avr to arduino mini.
 **** Vi-TODO Document in a bash script for easy use.
+
+*** Dharsh-TODO SPI Communication with Raspberry pi to Arduino
+*** Dharsh-TODO Communication between Raspberry pi and Matlab
+   Note: If possible, add external python functions for ease of use
 ** Dharsh-TODO Controller logic
 *** Dharsh-Owner Implement gyrometer, accelerometer & magnetometer PID controller
     Note: Philip (IEEE) mentioned that it would take far too long for the drones to come to a stop and hover and would not be appropiate for a swarm of controller
     Recommends switching to a position based PID controller
-*** ASK-Trey Ask Trey about position based controller
+*** ASK -[DONE]-Trey Ask Trey about position based controller
 **** Dharsh-TODO Implement position based controller in Simulink
       Note: Pretend that the Raspberry Pi is sending signals but actually use the keyboard for mocking.
 ** Vi-TODO OpenCV Software
 *** Vi-TODO Implement the video combination thing and connect to Simulink
-*** Vi-TODO Fill in this section
+*** Vi-TODO Make simulink block that outputs velocity
 ** Vi-TODO Drone Frame
 *** Vi-TODO Place components on plywood
 *** Vi-TODO Design drone shape 
@@ -147,6 +151,14 @@ Effectively, make it thin and increase strength on thin frames by two planks. Go
 
  - [[https://github.com/NelisW/myOpenHab/blob/master/docs/707-MPU-9250-9265%20IMU.md][Github Link]] 
  - [[http://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf][Spec sheet]]
+ - [https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjw8LqL7cbaAhXMVN8KHar-A8sQjRx6BAgAEAU&url=https%3A%2F%2Fwww.14core.com%2Fwiring-the-mpu9250-9-axis-motion-tracking-micro-electro-mechanical-system%2F&psig=AOvVaw1CuFagNQTd-hrBjuOUPyaI&ust=1524244934643223][Pin out]
+
+*** I2C Layout
+#+ATTR_ORG: :width 2.0in
+#+ATTR_LATEX: :width 2.0in
+#+ATTR_HTML: :width 2.0in
+#+DOWNLOADED: file:/Users/Dharshan/Documents/pyrant/Images/imu_i2c_pin_layout.png @ 2018-04-19 14:15:41
+[[file:Inventory/imu_i2c_pin_layout_2018-04-19_14-15-41.png]]
 
  - Brief Description
  #+BEGIN_TEXT
@@ -158,5 +170,8 @@ Effectively, make it thin and increase strength on thin frames by two planks. Go
  Pin spacing:2.54mm
  Size: 15mm*25mm (approx)
  #+END_TEXT
+
+
+
 
 * Link to simulink code
