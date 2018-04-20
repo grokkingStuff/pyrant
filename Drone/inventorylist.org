@@ -82,8 +82,8 @@
 ***** Vi-TODO Place two motor controller, one arduino mini & one IMU unit on a prototyping board
 ***** Vi-TODO Solder into place and use cables for pin management 
 ***** Vi-TODO IMU unit
-****** Vi-OWNER Connect header pins to IMU unit
-****** Vi-Todo Connect IMU pins to Arduino pins through I2C interface
+****** Vi-Owner Connect header pins to IMU unit
+****** Vi-Owner Connect IMU pins to Arduino pins through I2C interface
 **** Vi-TODO Raspberry Pi 
 ***** Vi-TODO Connect cameras to board 
 ** Dharsh-TODO Simulink
