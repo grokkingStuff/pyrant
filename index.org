@@ -2,6 +2,7 @@
 #+AUTHOR: Dharshan Rammohan & Vishakh Kumar
 
 
+
 * Custom org-mode features for this file
 Mainly to put custom TODO types so that everyone can use them.
 
@@ -63,24 +64,54 @@ Mainly to put custom TODO types so that everyone can use them.
   
 ** Hardware
 *** Vi-TODO Flight Logic Controller
-**** Vi-TODO Connect the arduino pins to raspberry pi pins for SPI interface
+**** Vi-Owner Connect the arduino pins to raspberry pi pins for SPI interface
 **** Vi-TODO Arduino
 ***** Vi-TODO Place two motor controller, one arduino mini & one IMU unit on a prototyping board
-***** Vi-TODO Solder into place and use cables for pin management 
-***** Vi-TODO IMU unit
+***** Vi-Owner Solder into place and use cables for pin management 
+***** Vi-Owner IMU unit
 ****** Vi-Owner Connect header pins to IMU unit
 ****** Vi-Owner Connect IMU pins to Arduino pins through I2C interface
 **** Vi-TODO Raspberry Pi 
-***** Vi-TODO Connect cameras to board 
+***** Vi-Owner Connect cameras to board 
+*** Vi-TODO Batteries
+**** Vi-TODO Research Lipo-cell regulators for more than one battery
+***** Vi-TODO Take into account adding extra batteries and a regulator increase weights, cost, and time spent in development for a marginal increase in flight time.
+*** Dharsh-TODO Propellors 
+**** Dharsh-TODO Pick up propellors from amazon
+**** Dharsh-TODO Check if propellors fit the shaft.
+
+Troubleshooting in advance.
+
+Measure motor shaft thickness and update inventory. When propellors arrive, check for cavity thickness
+
+When Vi goes to Microcenter next time, he will measure the motor shaft thickness and check for propellors that fit (along with a list of costs.) This will serve as the backup option should the propellors from Amazon be inadequete.
+
+1) Motor Shaft is bigger but just a bit too big.
+  Use a drill bit that fits the width of the propellor cavity. Borrow one from the woodshop and use the drill press.
+
+2) Motor Shaft is smaller but just a bit too small.
+  Use glue to make up for the difference and ensure that the propellors are aligned properly.
+    Let the glue set when the motor is running.
+
+3) Propellors are absolutely screwed.
+
+  1) Buy from MicroCenter over the weekend OR
+  2) 3D print propellors using the SLS printer.
+
+**** Dharsh-TODO Connect propellors to motors and try dc powered test.
+***** Vi-TODO Check for number of motors required for drone configuration
+
 ** Dharsh-TODO Simulink
 *** Vi-Owner Added RASPlib library
 *** Vi-Owner Implemented feedback-input comparator
 *** Vi-Owner mux-ed and demux-d input and made subsystem
+
 *** Dharsh-OWNER Integrate Motor controllers
-n**** Dharsh-TODO Add .c files to Matlab
+**** Dharsh-TODO Add .c files to Matlab
 **** Dharsh-TODO Add motor controller blocks to a subsystem and define input/output
       Note: Making this a seperate subsystem will make it easier to switch to a hexacopter motor control.
 **** ASK-Trey Make a PID subsystem that accepts position based input.
+
 *** Vi-TODO Building process
 **** Vi-TODO Build c files and avr to arduino mini.
 **** Vi-TODO Document in a bash script for easy use.
@@ -92,19 +123,78 @@ n**** Dharsh-TODO Add .c files to Matlab
 *** Dharsh-Owner Implement gyrometer, accelerometer & magnetometer PID controller
     Note: Philip (IEEE) mentioned that it would take far too long for the drones to come to a stop and hover and would not be appropiate for a swarm of controller
     Recommends switching to a position based PID controller
-*** ASK -[DONE]-Trey Ask Trey about position based controller
-**** Dharsh-TODO Implement position based controller in Simulink
+
+**** Dharsh-Owner Implement position based controller in Simulink
       Note: Pretend that the Raspberry Pi is sending signals but actually use the keyboard for mocking.
+*** ASK-TreyTune the PID controllers for the drones
+    Note: Begin with the innermost loop first and work your way out
 ** Vi-TODO OpenCV Software
 *** Vi-TODO Implement the video combination thing and connect to Simulink
 *** Vi-TODO Make simulink block that outputs velocity
-** Vi-TODO Drone Frame
-*** Vi-TODO Place components on plywood
-*** Vi-TODO Design drone shape 
-**** Vi-TODO Try to make thin frames with multiple overlays
-Effectively, make it thin and increase strength on thin frames by two planks. Go Deformable Bodies!
-*** Vi-TODO Laser-cut at the invention studio
+*** Vi-TODO Create recognizable and easy to print rectangular squares for opencv to detect
+**** Vi-TODO Camera lens distortion is an issue, pls fix
+*** Vi-TODO Release OpenCV application as a statically linked package for MAtlab to use
+Note: Remember uploading pything functions earlier with numpy? Didn't go well.
 
+** Vi-TODO Drone Frame
+
+The place where everything comes together! Design requirements below to aid design process.
+
+Basic Requirements:
+
+- [ ] Plywood body for drone.
+- [ ] Fix components into drone body using screws
+- [ ] Follow secondary requirements as much as possible.
+
+Secondary Requirements:
+
+- Battery 
+  -[ ] Have space for drone cell or multiple cells if possible.
+  - Have easy access to charging battery with a usb port (possibly the one used by Android phones pre-2017)
+- Camera
+  - [ ] Forward facing
+  - [ ] Rest in static vertical position using a small slot in frame.
+- Motor & Propellors
+  - [ ] Ensure that there is adequete space for propellors and motors to prevent collision
+  - [ ] Since plywood isn't appropiate for 3d structures, use ABS to make a small motor housing.
+- IMUs
+  - [ ] Ensure that the IMU is fixed with reference to the drone body
+  - [ ] Ensure that the code taken in by matlab doesn't have differnt orientations than real-life
+- General Electronics safety requirements
+  - [ ] Ensure that electrical components are seperated from each other by air whenever possible.
+  - [ ] Use glue on any extruding wires to minimize chance of electrical shortage
+
+Tertiary Requirements
+
+- Style
+  - [ ] Add a brief description of the project with atleast the following: Name, Github Link, Authors.
+  - [ ] Use printing tape for any engraved designed.
+  - [ ] Stick to easy to engrave designs
+- Payload
+  - IR Emitter
+    - [ ] Place the IR emitter and stop moving drone if too close to the wall.
+  - LEDs
+    - [ ]Add LEDs to demonstrate extra power consumption
+
+
+
+*** Vi-Owner Place components on plywood/paper for rough mockup
+    Effectively, ensure that you have a general shape for the drone before you CAD stuff up. Remember to adhere to the Design Requirements. If possible, consult with Dharsh & Trey to ensure that the design isn't blatenty stupid.
+**** Vi-Todo Scan drawings for future reference.
+    Use that fancy paper and markers from ME 1770. Note from Vi: This is the third time I've use it outside that class. Expectations pleasently shattered.
+
+*** Vi-TODO Design drone shape 
+**** Vi-TODO Design phase for drone frame
+***** Vi-Owner Try to make thin frames with multiple overlays
+ Effectively, make it thin and increase strength on thin frames by two planks. Go Deformable Bodies!
+***** Vi-TODO Separate arduino & raspberry pi to prevent electrical shortages
+***** Vi-TODO Add super glue to any extruding electrical components to minimize electrial shortages
+**** Vi-TODO Solidworks phase
+***** Vi-TODO Create mutilayer drone shape in SLD
+***** Vi-TODO split using the split body function and check for excessive angles ruining final product.
+Note: Also make sure it looks great.
+**** Vi-TODO Invention studio
+***** 3D print house casing for motors instead of using plywood.
 
 * Inventory
 
